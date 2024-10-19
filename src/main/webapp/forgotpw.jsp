@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JLC BookStore</h1> 
+	<h2>Password Assistance Form</h2> 
+	<font color="red" size="5"> ${MyMsg} </font> 
+	<form action="mypassword.jlc" method="post"> 
+		<table> 
+			<tr> 
+				<td>Enter Email</td> 
+			</tr> 
+			<tr> 
+				<td><input type="text" name="email" /></td> 
+			</tr> 
+			<tr> 
+				<td><input type="submit" value="Submit" /></td> 
+			</tr> 
+		</table> 
+	</form>
+</body>
+</html>
