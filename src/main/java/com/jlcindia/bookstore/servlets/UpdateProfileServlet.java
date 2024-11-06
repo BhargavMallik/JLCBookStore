@@ -1,0 +1,59 @@
+package com.jlcindia.bookstore.servlets;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.jlcindia.bookstore.to.User;
+
+@WebServlet(name = "updateProfile", urlPatterns = { "/editProfile.jlc", "/updateProfile.jlc" }) 
+public class UpdateProfileServlet extends JLCBaseServlet { 
+	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException { 
+		System.out.println("UpdateProfileServlet-service()"); 
+		String URI = req.getRequestURI(); 
+		int updateStatus = 0; 
+		String page = ""; 
+		if (URI.endsWith("editProfile.jlc")) { 
+			HttpSession session = req.getSession(false); 
+			if (session == null) { 
+				String msg = "Session Expired. Login Again"; 
+				req.setAttribute("LoginMsg", msg); 
+				page = "login.jsp"; 
+			}
+			else { 
+				User userTO = (User) session.getAttribute("MyUserInfo"); 
+				int userId = userTO.getUserId(); 
+				User myuserTO = userService.getUserByUserId(userId); 
+				session.setAttribute("MyUserInfo", myuserTO); 
+				page = "updateProfile.jsp"; 
+			} 
+		} else if (URI.endsWith("updateProfile.jlc")) { 
+			String userId = req.getParameter("userId"); 
+			String fullName = req.getParameter("fullName"); 
+			String email = req.getParameter("email"); 
+			String phone = req.getParameter("phone"); 
+			
+			User userTO = userService.getUserByUserId(Integer.parseInt(userId)); 
+			userTO.setFullName(fullName); 
+			userTO.setEmail(email); 
+			userTO.setPhone(phone); 
+			updateStatus = userService.updateProfile(userTO); 
+			if (updateStatus==1) { 
+				page = "updateProfileStatus.jsp"; 
+				String upMsg = "Your Profile is updated Successfully"; 
+				req.setAttribute("UpdateMsg", upMsg); 
+			} else { 
+				page = "updateProfile.jsp"; 
+				String upMsg = "Something Wrong, Try again"; 
+				req.setAttribute("UpdateMsg", upMsg);
+			} 
+		} 
+		RequestDispatcher rd = req.getRequestDispatcher(page); 
+		rd.forward(req, res); 
+	} 
+}
