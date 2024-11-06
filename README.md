@@ -18,11 +18,7 @@ The BookStore application is a Java-based web application designed to manage a b
 - Bootstrap (for front-end styling)
 - Apache Tomcat (as the web server)
 
-## Project Structure
-
-
 ## Installation Instructions
-BookStore/ ├── src/ │ ├── com/ │ │ ├── jlcindia/ │ │ │ ├── bookstore/ │ │ │ │ ├── dao/ # Data Access Objects for database interactions │ │ │ │ ├── service/ # Service layer for business logic │ │ │ │ ├── servlets/ # Servlet classes for handling requests │ │ │ │ ├── to/ # Transfer Objects (DTOs) │ │ │ │ └── util/ # Utility classes ├── web/ │ ├── WEB-INF/ │ │ ├── web.xml # Web application configuration file │ ├── login.jsp # User login page │ ├── registration.jsp # User registration page │ ├── home.jsp # Home page after login │ ├── showBooks.jsp # Page to display books │ ├── showMyCart.jsp # Shopping cart page │ ├── orderConfirmation.jsp # Order confirmation page │ ├── orderHistory.jsp # User order history page │ ├── forgotpw.jsp # Password recovery page │ ├── changepw.jsp # Change password page │ ├── updateProfile.jsp # Update user profile page └── README.md # Project documentation
 
 ### Prerequisites
 - Java Development Kit (JDK) 8 or higher
