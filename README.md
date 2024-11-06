@@ -47,9 +47,9 @@ The BookStore application is a Java-based web application designed to manage a b
   Navigate to the Tomcat installation directory and run:
   ````bash
   bin/startup.sh (Linux/Mac)
-  ````
+  ````bash
   bin/startup.bat (Windows)
-
+   ````
 6. **Access the Application**:
   Open your web browser and navigate to http://localhost:8080/BookStore.
 
